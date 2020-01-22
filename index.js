@@ -1,10 +1,17 @@
 console.log('Before');
 
+//consuming the results of asynchronous functions
+//each Promise has the methods: .then (for results) and .catch (for errors)
+
 getUser(1)
   .then(user => getRepositories(user.gitHubUsername))
   .then(repos => getCommits(repos[0]))
   .then(commits => console.log(commits))
+
 console.log('After');
+
+//these are the asynchronous functions, using Promises
+//`resolve` handles the eventual result of the Promise
 
 function getUser(id) {
  return new Promise((resolve,reject) => {
